@@ -1,6 +1,3 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import { IoHomeOutline } from "react-icons/io5";
 import { PiForkKnife } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
@@ -10,20 +7,18 @@ import { ROUTES } from "~/app/utils/const";
 
 function NavbarLinks() {
 
-  const pathname = usePathname();
-
   return (
-    <>
-      <LinkButton left={IoHomeOutline} selected={ROUTES.HOME === pathname} href={ROUTES.HOME}>
-        Inicio
-      </LinkButton>
-      <LinkButton left={PiForkKnife} selected={ROUTES.PLATES === pathname} href={ROUTES.PLATES}>
-        Platos
-      </LinkButton>
-      <LinkButton left={RxAvatar} selected={ROUTES.PROFILE === pathname} href={ROUTES.PROFILE}>
-        Perfil
-      </LinkButton>
-    </>
+      <section className="p-4 flex flex-col items-center gap-2 border-b border-primary-dark grow">
+        <LinkButton left={<IoHomeOutline className="size-6" />} href={ROUTES.HOME}>
+          Inicio
+        </LinkButton>
+        <LinkButton left={<PiForkKnife className="size-6" />} href={ROUTES.PLATES}>
+          Platos
+        </LinkButton>
+        <LinkButton left={<RxAvatar className="size-6" />} href={ROUTES.PROFILE}>
+          Perfil
+        </LinkButton>
+    </section>
   );
 }
 

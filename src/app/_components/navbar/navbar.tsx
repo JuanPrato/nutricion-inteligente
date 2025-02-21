@@ -15,9 +15,7 @@ export function Navbar({ user }: { user: User }) {
         </div>
         <h3 className="font-medium text-xl">{user.name}</h3>
       </section>
-      <section className="p-4 flex flex-col items-center gap-4 border-b border-primary-dark grow">
-        <NavbarLinks />
-      </section>
+      <NavbarLinks />
       <section className="h-[75px] flex justify-center items-center">
         <Link href={ROUTES.HOME}>
           <h1 className="text-2xl">Nutrición inteligente</h1>
