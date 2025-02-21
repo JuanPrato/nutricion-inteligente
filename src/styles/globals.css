@@ -18,6 +18,20 @@
   }
 }
 
+@layer components {
+  .progress-bar {
+    height: 10px;
+
+    &::-webkit-progress-bar {
+      background-color: var(--color-primary-dark, currentColor);
+    }
+    &::-webkit-progress-value {
+      background-color: var(--color-primary, currentColor);
+      border-radius: var(--radius-lg);
+    }
+  }
+}
+
 @theme {
   --color-primary: white;
   --color-secondary: #A385F4;
@@ -25,4 +39,5 @@
 
   --color-primary-dark: rgba(255, 255, 255, 0.3);
   --color-primary-darker: rgba(255, 255, 255, 0.1);
+
 }
