@@ -30,6 +30,16 @@
       border-radius: var(--radius-lg);
     }
   }
+
+  .little-card {
+    min-height: 75px;
+    background-color: var(--color-primary-dark, currentColor);
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing)* 2);
+    padding: calc(var(--spacing) * 2);
+    border-radius: var(--radius-sm)
+  }
 }
 
 @theme {
