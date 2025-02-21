@@ -2,7 +2,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { PiForkKnife } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 
-import { LinkButton } from "~/app/_components/button";
+import { LinkButton } from "~/app/_components/utils/button";
 import { ROUTES } from "~/app/utils/const";
 
 function NavbarLinks() {
