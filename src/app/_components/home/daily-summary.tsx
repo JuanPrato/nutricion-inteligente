@@ -5,8 +5,7 @@ import { LittleCard } from "~components/utils/card";
 
 function DailySummary() {
   return (
-      <Section>
-        <h2 className="text-2xl font-bold">Resumen diario</h2>
+      <Section title="Resumen diario">
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-4">
             <div>
