@@ -8,7 +8,7 @@ import NavbarLinks from "~/app/_components/navbar/navbar-links";
 
 export function Navbar({ user }: { user: User }) {
   return (
-    <aside className="bg-primary-darker w-1/4 max-w-96 h-full shadow-lg flex flex-col">
+    <aside className="bg-primary-darker w-1/4 max-w-96 min-h-screen shadow-lg flex flex-col">
       <section className="py-4 flex flex-col items-center gap-4 border-b border-primary-dark">
         <div className="aspect-square bg-primary-dark rounded-full relative w-1/3 overflow-hidden">
           <Image src={user.image ?? ""} alt="profile picture" fill></Image>
