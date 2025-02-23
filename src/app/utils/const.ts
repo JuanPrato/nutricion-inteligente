@@ -1,3 +1,7 @@
+import { FiCoffee } from "react-icons/fi";
+import { PiForkKnife } from "react-icons/pi";
+import { LuCakeSlice, LuCandy, LuMoon } from "react-icons/lu";
+
 export const ROUTES = {
   HOME: "/",
   PLATES: "/platos",
@@ -6,3 +10,11 @@ export const ROUTES = {
 } as const;
 
 export type Route = typeof ROUTES[keyof typeof ROUTES];
+
+export const ICONS = {
+  BREAKFAST: FiCoffee,
+  LAUNCH: PiForkKnife,
+  AFTER_LAUNCH: LuCakeSlice,
+  DINNER: LuMoon,
+  SNACK: LuCandy
+}

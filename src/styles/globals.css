@@ -32,7 +32,7 @@
   }
 
   .little-card {
-    min-height: 75px;
+    height: 75px;
     background-color: var(--color-primary-dark, currentColor);
     display: flex;
     align-items: center;
@@ -49,5 +49,10 @@
 
   --color-primary-dark: rgba(255, 255, 255, 0.3);
   --color-primary-darker: rgba(255, 255, 255, 0.1);
+
+  --color-breakfast: #522504;
+  --color-launch: #828282;
+  --color-after-launch: #EB4E51;
+  --color-dinner: #4F4F4F;
 
 }
