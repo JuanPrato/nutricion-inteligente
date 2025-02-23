@@ -10,6 +10,7 @@ interface ButtonProps {
   left?: ReactNode;
   selected?: boolean;
   full?: boolean;
+  circle?: boolean;
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -22,7 +23,8 @@ export function Button(props: ButtonProps) {
           "cursor-pointer flex items-center gap-3 p-2 rounded-lg transition-colors",
           props.selected && "bg-primary-dark",
           !props.selected && "hover:bg-primary-darker",
-          props.full && "w-full"
+          props.full && "w-full",
+          props.circle && "rounded-full"
       )}>
         {props.left} <span className="text-lg">{props.children}</span>
       </button>
