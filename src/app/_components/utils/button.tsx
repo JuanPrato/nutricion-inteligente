@@ -20,13 +20,13 @@ interface LinkButtonProps extends ButtonProps {
 export function Button(props: ButtonProps) {
   return (
       <button className={twMerge(
-          "cursor-pointer flex items-center gap-3 p-2 rounded-lg transition-colors",
+          "cursor-pointer flex items-center gap-3 p-2 rounded-lg transition-[backdrop-filter]",
           props.selected && "bg-primary-dark",
-          !props.selected && "hover:bg-primary-darker",
+          !props.selected && "hover:backdrop-brightness-90",
           props.full && "w-full",
           props.circle && "rounded-full"
       )}>
-        {props.left} <span className="text-lg">{props.children}</span>
+        {props.left} {props.children && <span className="text-lg">{props.children}</span>}
       </button>
   )
 }
