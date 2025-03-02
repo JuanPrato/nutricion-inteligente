@@ -33,6 +33,7 @@
 
   .little-card {
     height: 75px;
+    width: 100%;
     background-color: var(--color-primary-dark, currentColor);
     display: flex;
     align-items: center;

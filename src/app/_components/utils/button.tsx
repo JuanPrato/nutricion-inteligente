@@ -11,6 +11,8 @@ interface ButtonProps {
   selected?: boolean;
   full?: boolean;
   circle?: boolean;
+  className?: string;
+  textClassName?: string;
 }
 
 interface LinkButtonProps extends ButtonProps {
@@ -23,10 +25,11 @@ export function Button(props: ButtonProps) {
           "cursor-pointer flex items-center gap-3 p-2 rounded-lg transition-[backdrop-filter]",
           props.selected && "bg-primary-dark",
           !props.selected && "hover:backdrop-brightness-90",
-          props.full && "w-full",
-          props.circle && "rounded-full"
+          props.full ? "w-full" : "w-2/3",
+          props.circle && "rounded-full",
+          props.className
       )}>
-        {props.left} {props.children && <span className="text-lg">{props.children}</span>}
+        {props.left} {props.children && <span className={twMerge("text-lg", props.textClassName)}>{props.children}</span>}
       </button>
   )
 }

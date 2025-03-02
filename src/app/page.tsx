@@ -3,10 +3,9 @@ import Link from "next/link";
 import { auth } from "~/server/auth";
 import { HydrateClient } from "~/trpc/server";
 import { redirect } from "next/navigation";
-import { ROUTES } from "~/app/utils/const";
-import { Section } from "~/app/_components/utils/section";
-import { LittleCard } from "~/app/_components/utils/card";
-import { FiTarget } from "react-icons/fi";
+import DayFoods from "~components/home/day-foods";
+import DailySummary from "~components/home/daily-summary";
+import { ROUTES } from "~utils/const";
 
 export default async function Home() {
   const session = await auth();
@@ -17,24 +16,9 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="p-4">
-            <Section>
-              <h2 className="text-2xl font-bold">Resumen diario</h2>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex flex-col gap-4">
-                  <div>
-                    <h2 className="text-4xl font-bold">150 kcal</h2>
-                    <h4>Consumidas hoy</h4>
-                    <progress value={.5} className="w-full rounded-lg overflow-hidden progress-bar" />
-                    <h4>50% completado</h4>
-                  </div>
-                  <h4 className="text-2xl">¡Dale que llegamos!</h4>
-                </div>
-                <div>
-                  <LittleCard principal="2000 kcal" top="Meta diaria" description="100 kcal restantes" icon={FiTarget} iconClassName="text-blue-500" />
-                </div>
-              </div>
-            </Section>
+      <main className="p-4 flex flex-col gap-4">
+            <DailySummary />
+            <DayFoods />
             <p className="text-center text-2xl text-white">
               {session && <span>Logged in as {session.user?.name}</span>}
             </p>

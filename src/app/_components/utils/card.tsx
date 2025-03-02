@@ -16,19 +16,21 @@ export function LittleCard(props: LittleCardProps) {
   return (
     <div className="little-card">
       {props.icon && (
-        <div className={twMerge(
-            "bg-primary-dark flex aspect-square h-full items-center justify-center rounded-full"
-        )}>
+        <div className="bg-primary-dark flex aspect-square h-full items-center justify-center rounded-full">
           {<props.icon className={twMerge("aspect-square size-[75%]", props.iconClassName)} />}
         </div>
       )}
-      <div className="grow h-full flex flex-col justify-center leading-none">
+      <div className="w-full h-full flex flex-col justify-center leading-none">
         <p className="text-md">{props.top}</p>
         <h3 className="text-xl">{props.principal}</h3>
         <h5 className="text-sm text-primary">{props.description}</h5>
       </div>
       {
-        props.action && (props.action)
+        props.action && (
+            <div className="w-[75px]">
+              {props.action}
+            </div>
+          )
       }
     </div>
   );

@@ -19,4 +19,20 @@ export const ICONS = {
   DINNER: LuMoon,
   SNACK: LuCandy,
   EDIT: HiOutlinePencil
+} as const;
+
+export const FOODS_DESCRIPTION = {
+  BREAKFAST: "Desayuno",
+  LAUNCH: "Almuerzo",
+  AFTER_LAUNCH: "Merienda",
+  DINNER: "Cena",
+  SNACK: "Snack",
+} as const;
+
+export enum FOODS {
+  BREAKFAST = "BREAKFAST",
+  LAUNCH = "LAUNCH",
+  AFTER_LAUNCH = "AFTER_LAUNCH",
+  DINNER = "DINNER",
+  SNACK = "SNACK"
 }
