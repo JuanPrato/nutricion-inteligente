@@ -29,6 +29,14 @@ export const FOODS_DESCRIPTION = {
   SNACK: "Snack",
 } as const;
 
+export const FOODS_COLORS = {
+  BREAKFAST: "text-breakfast",
+  LAUNCH: "text-launch",
+  AFTER_LAUNCH: "text-after-launch",
+  DINNER: "text-dinner",
+  SNACK: "text-black",
+} as const;
+
 export enum FOODS {
   BREAKFAST = "BREAKFAST",
   LAUNCH = "LAUNCH",

@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { LittleCard } from "~components/utils/card";
-import { type FOODS, FOODS_DESCRIPTION, ICONS } from "~utils/const";
+import { type FOODS, FOODS_COLORS, FOODS_DESCRIPTION, ICONS } from "~utils/const";
 import { Button } from "~components/utils/button";
+import { twJoin } from "tailwind-merge";
 
 interface Props {
   food: FOODS;
@@ -14,7 +15,7 @@ export function DayFood(props: Props) {
         <LittleCard
             principal={FOODS_DESCRIPTION[props.food]}
             icon={ICONS[props.food]}
-            iconClassName="size-10 text-breakfast"
+            iconClassName={twJoin("size-10", FOODS_COLORS[props.food])}
             description="620 kcal"
             action={<Button circle full left={<ICONS.EDIT className="size-6 text-black" />}/>}
         />
