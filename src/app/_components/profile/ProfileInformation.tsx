@@ -1,19 +1,13 @@
 import React from 'react';
 import { Section } from "~components/utils/section";
-import { auth } from "~/server/auth";
 import { Avatar } from "~components/utils/avatar";
-import { redirect } from "next/navigation";
-import { ROUTES } from "~utils/const";
+import type { User } from "next-auth";
 
-export async function ProfileInformation() {
+interface ProfileInformationProps {
+  user: User;
+}
 
-  const session = await auth();
-
-  if (!session) {
-    redirect(ROUTES.LOGIN);
-  }
-
-  const user = session.user;
+export async function ProfileInformation({ user }: ProfileInformationProps) {
 
   return (
       <Section title="Información personal">
