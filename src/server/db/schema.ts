@@ -1,10 +1,10 @@
 import { relations, sql } from "drizzle-orm";
 import {
   index,
-  int,
+  int, integer,
   primaryKey,
   sqliteTableCreator,
-  text,
+  text
 } from "drizzle-orm/sqlite-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -31,6 +31,8 @@ export const users = createTable("user", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
+  plates: many(plates),
+  foods: many(foods)
 }));
 
 export const accounts = createTable(
@@ -93,3 +95,71 @@ export const verificationTokens = createTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const ingredients = createTable("ingredients", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name", { length: 255 }).notNull(),
+  kcal: integer("kcal").default(0),
+});
+
+export const ingredientsRelations = relations(ingredients, ({ many }) => ({
+  ingredientsToPlates: many(ingredientsToPlates)
+}))
+
+export const plates = createTable("plates", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  name: text("name", { length: 255 }).notNull(),
+  userId: text("user_id", { length: 255 }).notNull(),
+});
+
+export const platesRelations = relations(plates, ({ many, one }) => ({
+  ingredientsToPlates: many(ingredientsToPlates),
+  user: one(users, {
+    fields: [plates.userId],
+    references: [users.id],
+  }),
+  foods: many(foods)
+}))
+
+
+export const ingredientsToPlates = createTable(
+    "ingredients_to_plates",
+    {
+      ingredientId: integer("ingredient_id").notNull().references(() => ingredients.id),
+      plateId: integer("plate_id").notNull().references(() => plates.id)
+    },
+    (table) => ({
+      compoundKey: primaryKey({ columns: [table.ingredientId, table.plateId] })
+    })
+);
+
+export const ingredientsToPlatesRelations = relations(ingredientsToPlates, ({ one }) => ({
+  group: one(ingredients, {
+    fields: [ingredientsToPlates.ingredientId],
+    references: [ingredients.id],
+  }),
+  user: one(plates, {
+    fields: [ingredientsToPlates.plateId],
+    references: [plates.id],
+  }),
+}));
+
+export const foods = createTable("foods", {
+  id: integer("id"),
+  category: text("category", { enum: ["BREAKFAST", "LAUNCH", "AFTER_LAUNCH", "DINNER"] }),
+  snack: integer("snack", { mode: "boolean" }),
+  day: integer("day", { mode: "timestamp" }),
+  plateId: integer("plate_id").references(() => plates.id),
+  userId: text("user_id", { length: 255 }).notNull(),
+});
+
+export const foodsRelations = relations(foods, ({ one }) => ({
+  plate: one(plates, {
+    fields: [foods.plateId],
+    references: [plates.id],
+  }),
+  user: one(users, {
+    fields: [foods.userId],
+    references: [users.id],
+  })
+}));
