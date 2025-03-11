@@ -14,15 +14,17 @@ interface ButtonProps {
   outlined?: boolean;
   className?: string;
   textClassName?: string;
+  onClick?: () => void;
 }
 
-interface LinkButtonProps extends ButtonProps {
+interface LinkButtonProps extends Omit<ButtonProps, "onClick"> {
   href?: string;
 }
 
 export function Button(props: ButtonProps) {
   return (
-      <button className={twMerge(
+      <button
+        className={twMerge(
           "cursor-pointer flex items-center gap-3 p-2 rounded-md transition-[backdrop-filter]",
           props.selected && "bg-primary-dark",
           !props.selected && "hover:backdrop-brightness-90",
@@ -30,7 +32,9 @@ export function Button(props: ButtonProps) {
           props.circle && "rounded-full",
           props.outlined && "outline outline-primary",
           props.className
-      )}>
+        )}
+        onClick={props.onClick}
+      >
         {props.left} {props.children && <span className={twMerge("text-lg", props.textClassName)}>{props.children}</span>}
       </button>
   )
