@@ -2,7 +2,7 @@ import { Card, CardActions, CardContent, CardHeader } from "~components/utils/ca
 import { ICONS } from "~utils/const";
 import { Button } from "~components/utils/button";
 
-function PlateCard() {
+export function PlateCard() {
   return (
       <Card>
         <CardHeader title="Avocado toast" subtitle="689 kcal / 2 ingredientes" icon={ICONS.BREAKFAST} />
@@ -28,5 +28,3 @@ function PlateCard() {
       </Card>
   );
 }
-
-export default PlateCard;

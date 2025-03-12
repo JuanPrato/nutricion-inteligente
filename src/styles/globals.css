@@ -108,6 +108,9 @@
   --color-after-launch: #EB4E51;
   --color-dinner: #4F4F4F;
 
+  --color-success: var(--color-green-700);
+  --color-success-tint: var(--color-green-200);
+
   --color-warning: var(--color-yellow-700);
   --color-warning-tint: var(--color-yellow-200);
 
