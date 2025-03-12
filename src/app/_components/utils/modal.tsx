@@ -32,13 +32,13 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
       <dialog
           ref={dialogRef}
-          className="fixed top-1/2 left-1/2 rounded-md bg-primary-light brightness-110 backdrop-blur-sm backdrop:backdrop-brightness-75 -translate-[50%]"
+          className="relative top-1/2 left-1/2 rounded-md bg-primary-light brightness-110 backdrop:backdrop-brightness-75 backdrop:backdrop-blur-sm -translate-[50%]"
           onClose={onClose}
           onClick={(e) => onClick(e)}
       >
         <Button
             circle
-            className="absolute top-2 right-2 w-auto"
+            className="absolute top-2 right-2 w-auto size-6"
             onClick={onClose}
             textClassName="text-white"
         >
