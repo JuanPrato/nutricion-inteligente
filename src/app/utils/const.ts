@@ -1,7 +1,7 @@
 import { FiCoffee } from "react-icons/fi";
 import { PiForkKnife } from "react-icons/pi";
-import { LuCakeSlice, LuCandy, LuMoon } from "react-icons/lu";
-import { HiOutlinePencil } from "react-icons/hi";
+import { LuCakeSlice, LuCandy, LuMoon, LuSave } from "react-icons/lu";
+import { HiOutlinePencil, HiTrash } from "react-icons/hi";
 
 export const ROUTES = {
   HOME: "/",
@@ -18,7 +18,10 @@ export const ICONS = {
   AFTER_LAUNCH: LuCakeSlice,
   DINNER: LuMoon,
   SNACK: LuCandy,
-  EDIT: HiOutlinePencil
+  INGREDIENTS: LuCandy,
+  EDIT: HiOutlinePencil,
+  DELETE: HiTrash,
+  SAVE: LuSave
 } as const;
 
 export const FOODS_DESCRIPTION = {
