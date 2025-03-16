@@ -32,7 +32,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
       <dialog
           ref={dialogRef}
-          className="relative top-1/2 left-1/2 rounded-md bg-primary-light brightness-110 backdrop:backdrop-brightness-75 backdrop:backdrop-blur-sm -translate-[50%]"
+          className="relative top-1/2 left-1/2 rounded-md bg-primary-light brightness-110 backdrop:backdrop-brightness-75 backdrop:backdrop-blur-md -translate-[50%]"
           onClose={onClose}
           onClick={(e) => onClick(e)}
       >
