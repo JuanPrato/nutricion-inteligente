@@ -101,6 +101,21 @@
     height: 100%;
     aspect-ratio: 1 / 1;
   }
+
+  .four-options {
+    & > button:first-child {
+      @apply rounded-tl-md! border-2!;
+    }
+    & > button:nth-child(2) {
+      @apply rounded-tr-md! border-t-2! border-r-2! border-b-2!;
+    }
+    & > button:nth-child(3) {
+      @apply rounded-bl-md! border-l-2! border-r-2! border-b-2!;
+    }
+    & > button:nth-child(4) {
+      @apply rounded-br-md! border-b-2! border-r-2!;
+    }
+  }
 }
 
 @theme {
