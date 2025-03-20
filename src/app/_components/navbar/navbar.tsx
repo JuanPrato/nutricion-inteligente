@@ -7,7 +7,7 @@ import { Avatar } from "~components/utils/avatar";
 
 export function Navbar({ user }: { user: User }) {
   return (
-    <aside className="bg-primary-darker min-w-[320px] h-screen shadow-lg flex flex-col sticky top-0">
+    <aside className="bg-primary-darker min-w-[150px] w-1/4 h-screen shadow-lg flex-col sticky top-0 hidden md:flex">
       <section className="py-4 flex flex-col items-center gap-4 border-b border-primary-dark">
         <Avatar img={user.image} alt="profile picture" />
         <h3 className="font-medium text-xl">{user.name}</h3>

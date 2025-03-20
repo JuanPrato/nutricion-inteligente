@@ -27,10 +27,10 @@ export default async function RootLayout({
     <html lang="en" className={`${roboto.className}`}>
       <body>
         <TRPCReactProvider>
-          <div className="from-secondary to-tertiary min-h-screen max-w-screen bg-linear-to-b text-white">
-            <div className="flex min-h-screen max-w-7xl mx-auto relative">
+          <div className="from-secondary to-tertiary max-w-screen bg-linear-to-b text-white">
+            <div className="flex max-w-7xl mx-auto relative">
             {session && <Navbar user={session.user} />}
-            <div className="flex-grow">
+            <div className="flex-grow overflow-hidden">
               {children}
             </div>
             </div>

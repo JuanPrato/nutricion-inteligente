@@ -16,18 +16,18 @@ export function LittleCard(props: LittleCardProps) {
   return (
     <div className={twMerge("little-card", props.small && "little-card-small")}>
       {props.icon && (
-        <div className="bg-primary-dark flex aspect-square h-full items-center justify-center rounded-full">
+        <div className="bg-primary-dark flex items-center justify-center rounded-full w-fit max-w-[25%] p-1 aspect-square">
           {
             <props.icon
               className={twMerge(
-                "aspect-square size-[75%]",
+                "w-1/2",
                 props.iconClassName,
               )}
             />
           }
         </div>
       )}
-      <div className={twMerge("flex h-full w-full flex-col justify-center leading-none", props.small && "h-fit flex-row justify-start items-baseline")}>
+      <div className={twMerge("flex h-full grow flex-col justify-center leading-none", props.small && "h-fit flex-row justify-start items-baseline")}>
         <p className="text-md">{props.top}</p>
         <h3 className="text-xl">{props.principal}</h3>
         <h5 className={twMerge("text-primary text-sm", props.small && "text-muted ml-1")}>{props.description}</h5>
