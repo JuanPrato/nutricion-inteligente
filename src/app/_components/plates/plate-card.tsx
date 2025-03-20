@@ -1,6 +1,6 @@
 import { Card, CardActions, CardContent, CardHeader } from "~components/utils/card";
 import { ICONS } from "~utils/const";
-import { Button } from "~components/utils/button";
+import { Button } from "../ui/button";
 
 export function PlateCard() {
   return (
@@ -15,14 +15,14 @@ export function PlateCard() {
         </CardContent>
         <CardActions>
           <Button
-              outlined
-              className="h-full outline-warning text-warning bg-warning-tint"
-              textClassName="text-sm font-medium w-full text-center">Editar
+              variant="warning"
+              className="h-full grow">
+            Editar
           </Button>
           <Button
-              outlined
-              className="h-full outline-danger text-danger bg-danger-tint"
-              textClassName="text-sm font-medium w-full text-center">Eliminar
+              variant="destructive"
+              className="h-full grow">
+            Eliminar
           </Button>
         </CardActions>
       </Card>

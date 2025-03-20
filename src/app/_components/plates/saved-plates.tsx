@@ -1,10 +1,10 @@
 "use client";
 
 import { Section } from "~components/utils/section";
-import { PlateCard } from "~components/plates/PlateCard";
-import { Button } from "~components/utils/button";
-import { PlateModal } from "~components/plates/PlateModal";
+import { PlateCard } from "~components/plates/plate-card";
+import { PlateModal } from "~components/plates/plate-modal";
 import { useState } from "react";
+import { Button } from "~components/ui/button";
 
 function SavedPlates() {
 
@@ -13,7 +13,11 @@ function SavedPlates() {
   return (
       <Section
           title="Platos guardados"
-          action={<Button className="w-auto h-fit" outlined onClick={() => setOpen(true)}>Nuevo plato</Button>}
+          action={<Button
+              className="font-normal"
+              variant="outline"
+              onClick={() => setOpen(true)}
+          >Nuevo plato</Button>}
       >
         <div className="w-full grid grid-cols-3 gap-2">
           <PlateCard />

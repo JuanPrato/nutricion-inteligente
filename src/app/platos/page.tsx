@@ -1,5 +1,5 @@
 import { HydrateClient } from "~/trpc/server";
-import SavedPlates from "~components/plates/SavedPlates";
+import SavedPlates from "~components/plates/saved-plates";
 
 function PlatesPage() {
   return (

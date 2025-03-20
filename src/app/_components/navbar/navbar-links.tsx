@@ -6,17 +6,22 @@ import { LinkButton } from "~/app/_components/utils/button";
 import { ROUTES } from "~/app/utils/const";
 
 function NavbarLinks() {
-
   return (
       <section className="p-4 flex flex-col gap-2 border-b border-primary-dark grow">
-        <LinkButton left={<IoHomeOutline className="size-6" />} href={ROUTES.HOME} full>
-          Inicio
+        <LinkButton
+          href={ROUTES.HOME}
+        >
+          <IoHomeOutline className="size-6" /> <span className="text-xl font-normal">Inicio</span>
         </LinkButton>
-        <LinkButton left={<PiForkKnife className="size-6" />} href={ROUTES.PLATES} full>
-          Platos
+        <LinkButton
+          href={ROUTES.PLATES}
+        >
+          <PiForkKnife className="size-6" /> <span className="text-xl font-normal">Platos</span>
         </LinkButton>
-        <LinkButton left={<RxAvatar className="size-6" />} href={ROUTES.PROFILE} full>
-          Perfil
+        <LinkButton
+          href={ROUTES.PROFILE}
+        >
+          <RxAvatar className="size-6" /> <span className="text-xl font-normal">Perfil</span>
         </LinkButton>
     </section>
   );

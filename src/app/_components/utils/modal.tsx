@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import { Button } from "~components/utils/button";
+import { Button } from "~components/ui/button";
+import { X } from "lucide-react";
 
 interface ModalProps {
   isOpen: boolean;
@@ -32,17 +33,18 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   return (
       <dialog
           ref={dialogRef}
-          className="relative top-1/2 left-1/2 rounded-md bg-primary-light brightness-110 backdrop:backdrop-brightness-75 backdrop:backdrop-blur-md -translate-[50%]"
+          className="relative top-1/2 left-1/2 overflow-visible rounded-md bg-primary-light brightness-110 backdrop:backdrop-brightness-75 backdrop:backdrop-blur-md -translate-[50%]"
           onClose={onClose}
           onClick={(e) => onClick(e)}
       >
         <Button
-            circle
-            className="absolute top-2 right-2 w-auto size-6"
+            shape="circle"
+            size="icon"
+            variant="ghost"
+            className="absolute top-2 right-2 text-primary"
             onClick={onClose}
-            textClassName="text-white"
         >
-          &times;
+          <X />
         </Button>
         <div className="p-6">{children}</div>
       </dialog>

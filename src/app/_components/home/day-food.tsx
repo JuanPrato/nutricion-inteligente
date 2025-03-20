@@ -2,8 +2,8 @@ import React from 'react';
 
 import { LittleCard } from "~components/utils/card";
 import { type FOODS, FOODS_COLORS, FOODS_DESCRIPTION, ICONS } from "~utils/const";
-import { Button } from "~components/utils/button";
 import { twJoin } from "tailwind-merge";
+import { Button } from "~components/ui/button";
 
 interface Props {
   food: FOODS;
@@ -17,14 +17,13 @@ export function DayFood(props: Props) {
             icon={ICONS[props.food]}
             iconClassName={twJoin("size-10", FOODS_COLORS[props.food])}
             description="620 kcal"
-            action={<Button circle full left={<ICONS.EDIT className="size-6 text-black" />}/>}
+            action={<Button variant={"ghost"} shape="circle" size={"icon"}><ICONS.EDIT className="size-6 text-black" /></Button>}
         />
         <Button
-            className="backdrop-brightness-80 justify-center gap-1"
-            left={<ICONS.SNACK />}
-            textClassName="text-sm"
+            className="text-primary"
+            variant="ghost"
         >
-          Nuevo snack?
+          <ICONS.INGREDIENTS /> <span className="text-sm font-light">Nuevo snack?</span>
         </Button>
       </div>
   );
