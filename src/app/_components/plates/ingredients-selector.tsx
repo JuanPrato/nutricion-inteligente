@@ -6,35 +6,19 @@ import { AddIngredient } from "~components/plates/add-ingredient";
 import { useState } from "react";
 import { Button } from "~components/ui/button";
 import { LittleCard } from "~components/ui/card";
-
-const INGREDIENTS = [
-  {
-    name: "Pan",
-    kcal: 250
-  },
-  {
-    name: "Palta",
-    kcal: 125
-  }
-]
-
-const SELECTED_INGREDIENTS = [
-  {
-    name: "Pan",
-    kcal: 250
-  }
-]
+import { api } from "~/trpc/react";
+import  type { Ingredient } from "~/lib/types";
 
 export function IngredientsSelector() {
 
-  const [selectedIngredients, setSelectedIngredients] = useState(SELECTED_INGREDIENTS);
+  const ingredients = api.ingredients.getAll.useQuery();
+  const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
 
-  function onNewIngredients(ingredient: { name: string, kcal: number }) {
+  function onNewIngredients(ingredient: Ingredient) {
     setSelectedIngredients([...selectedIngredients, ingredient]);
   }
 
   function onDeleteIngredient(name: string) {
-    console.log("hola")
     setSelectedIngredients(selectedIngredients.filter((i) => i.name !== name));
   }
 
@@ -77,7 +61,7 @@ export function IngredientsSelector() {
             size={"small"}
           />
         ))}
-        <AddIngredient ingredients={INGREDIENTS} onNewIngredient={onNewIngredients} />
+        <AddIngredient ingredients={ingredients.data ?? []} onNewIngredient={onNewIngredients} />
       </div>
     </div>
   );

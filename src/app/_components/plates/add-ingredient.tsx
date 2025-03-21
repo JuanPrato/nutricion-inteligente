@@ -4,10 +4,11 @@ import { ICONS } from "~utils/const";
 import { useState } from "react";
 import { Combobox } from "~components/ui/combobox";
 import { Button } from "~components/ui/button";
+import type { Ingredient } from "~/lib/types";
 
 interface Props {
-  ingredients: { name: string, kcal: number }[];
-  onNewIngredient: (ingredient: { name: string, kcal: number }) => void;
+  ingredients: Ingredient[];
+  onNewIngredient: (ingredient: Ingredient) => void;
 }
 
 export function AddIngredient(props: Props) {
@@ -16,7 +17,7 @@ export function AddIngredient(props: Props) {
   const [value, setValue] = useState("");
 
   function handleSubmit() {
-    const ing = props.ingredients.find(i => i.name === value);
+    const ing = props.ingredients.find(i => i.id.toString() === value);
     if (!ing) return;
     setEditing(false);
     props.onNewIngredient(ing);
@@ -33,7 +34,7 @@ export function AddIngredient(props: Props) {
             onClick={handleSubmit}
         ><ICONS.SAVE /></Button>
         <Combobox
-            items={props.ingredients.map(i => ({ value: i.name, label: `${i.name} ${i.kcal} kcal` }))}
+            items={props.ingredients.map(i => ({ value: i.id.toString(), label: `${i.name} ${i.kcal} kcal` }))}
             searchPlaceholder={"Buscar ingredientes..."}
             onChange={setValue}
         />
