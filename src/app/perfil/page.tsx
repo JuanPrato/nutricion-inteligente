@@ -4,7 +4,8 @@ import { auth } from "~/server/auth";
 import { redirect } from "next/navigation";
 import { ROUTES } from "~utils/const";
 import { ProfileConfiguration } from "~components/profile/ProfileConfiguration";
-import { LinkButton } from "~components/utils/button";
+import { Button } from "~components/ui/button";
+import Link from "next/link";
 
 export default async function Profile() {
   const session = await auth();
@@ -14,18 +15,14 @@ export default async function Profile() {
   }
 
   return (
-      <HydrateClient>
-        <main className="flex flex-col gap-4 p-4">
-          <ProfileInformation user={session.user} />
-          <ProfileConfiguration />
-          <LinkButton
-              href="/api/auth/signout"
-              full
-              outlined
-              className="h-full outline-danger text-danger bg-danger-tint"
-              textClassName="text-sm font-medium w-full text-center">Cerrar sesión
-          </LinkButton>
-        </main>
-      </HydrateClient>
+    <HydrateClient>
+      <main className="flex flex-col gap-4 p-4">
+        <ProfileInformation user={session.user} />
+        <ProfileConfiguration />
+        <Button asChild variant={"destructive"}>
+          <Link href="/api/auth/signout">Cerrar sesión</Link>
+        </Button>
+      </main>
+    </HydrateClient>
   );
 }

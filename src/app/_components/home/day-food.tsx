@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { LittleCard } from "~components/utils/card";
 import { type FOODS, FOODS_COLORS, FOODS_DESCRIPTION, ICONS } from "~utils/const";
 import { twJoin } from "tailwind-merge";
 import { Button } from "~components/ui/button";
+import { LittleCard } from "~components/ui/card";
 
 interface Props {
   food: FOODS;

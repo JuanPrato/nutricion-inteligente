@@ -24,6 +24,13 @@
 }
 
 @layer components {
+
+  .center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .progress-bar {
     height: 10px;
 
@@ -103,8 +110,9 @@
     justify-content: center;
     border-radius: 100%;
     background-color: var(--color-primary-dark, currentColor);
-    height: 100%;
     aspect-ratio: 1 / 1;
+    margin: calc(var(--spacing) * 2);
+    height: 100%;
   }
 
   .four-options {
@@ -156,8 +164,8 @@
   --radius: 0.625rem;
   --background: transparent;
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card: var(--color-primary-dark, currentColor);
+  --card-foreground: var(--primary);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   --primary: white;
@@ -165,7 +173,7 @@
   --secondary: #A385F4;
   --secondary-foreground: white;
   --muted: var(--color-gray-300);
-  --muted-foreground: oklch(0.556 0 0);
+  --muted-foreground: var(--color-gray-100);
   --accent: var(--color-primary-dark);
   --accent-foreground: white;
   --destructive: var(--color-danger);

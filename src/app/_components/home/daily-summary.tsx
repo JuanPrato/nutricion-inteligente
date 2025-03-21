@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiTarget } from "react-icons/fi";
 import { Section } from "~components/utils/section";
-import { LittleCard } from "~components/utils/card";
+import { LittleCard } from "~components/ui/card";
 
 function DailySummary() {
   return (

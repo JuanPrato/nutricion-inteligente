@@ -1,11 +1,11 @@
 "use client";
 
 import { BiCamera, BiMicrophone } from "react-icons/bi";
-import { LittleCard } from "~components/utils/card";
 import { ICONS } from "~utils/const";
 import { AddIngredient } from "~components/plates/add-ingredient";
 import { useState } from "react";
 import { Button } from "~components/ui/button";
+import { LittleCard } from "~components/ui/card";
 
 const INGREDIENTS = [
   {
@@ -74,7 +74,7 @@ export function IngredientsSelector() {
                 <ICONS.DELETE className="text-danger"/>
               </Button>
             }
-            small
+            size={"small"}
           />
         ))}
         <AddIngredient ingredients={INGREDIENTS} onNewIngredient={onNewIngredients} />
