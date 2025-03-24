@@ -9,26 +9,46 @@ import {
   CardIcon,
   CardTitle,
 } from "../ui/card";
-import { twMerge } from "tailwind-merge";
+import type { Plate } from "~/lib/types";
 
-export function PlateCard() {
+interface PlateCardProps {
+  plate: Plate;
+}
+
+export function PlateCard({ plate }: PlateCardProps) {
+
+  const kcal = plate.ingredientsToPlates
+      .reduce((current, acc) => current + (acc.ingredient.kcal ?? 0), 0);
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Avocado toast</CardTitle>
-        <CardDescription>689 kcal / 2 ingredientes</CardDescription>
+        <CardTitle>{plate.name}</CardTitle>
+        <CardDescription>
+          {kcal} kcal / {plate.ingredientsToPlates.length} ingredientes
+        </CardDescription>
       </CardHeader>
       <CardIcon>
-        <ICONS.BREAKFAST className={twMerge("h-full")} />
+        {
+          plate.platesToCategories.map((category) => {
+            const desc = category.category.description as (keyof typeof ICONS);
+            const Icon = ICONS[desc];
+
+            return <Icon key={category.categoryId} className="h-full" />
+          })
+        }
       </CardIcon>
       <CardContent>
         <h5>Ingredientes:</h5>
         <ul className="text-sm">
-          <li>Pan 100 kcal</li>
-          <li>Palta 50 kcal</li>
+          {plate.ingredientsToPlates.map(({ ingredient }) => (
+            <li key={ingredient.id}>
+              {ingredient.name} {ingredient.kcal ?? 0} kcal
+            </li>
+          ))}
         </ul>
       </CardContent>
-      <CardFooter className="gap-2 grid grid-cols-2">
+      <CardFooter className="grid grid-cols-2 gap-2">
         <Button variant="warning" className="h-full grow">
           Editar
         </Button>

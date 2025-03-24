@@ -4,6 +4,7 @@ import SavedPlates from "~components/plates/saved-plates";
 function PlatesPage() {
 
   void api.ingredients.getAll.prefetch();
+  void api.plates.getAll.prefetch();
 
   return (
       <HydrateClient>

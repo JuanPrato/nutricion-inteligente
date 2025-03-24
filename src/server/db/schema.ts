@@ -114,6 +114,7 @@ export const plates = createTable("plates", {
 
 export const platesRelations = relations(plates, ({ many, one }) => ({
   ingredientsToPlates: many(ingredientsToPlates),
+  platesToCategories: many(platesToCategories),
   user: one(users, {
     fields: [plates.userId],
     references: [users.id],
@@ -121,6 +122,26 @@ export const platesRelations = relations(plates, ({ many, one }) => ({
   foods: many(foods)
 }))
 
+export const platesToCategories = createTable("plates_to_categories",
+    {
+      plateId: integer("plate_id").notNull().references(() => plates.id),
+      categoryId: integer("category_id").notNull().references(() => categories.id)
+    },
+    (table) => ({
+      compoundKey: primaryKey({ columns: [table.categoryId, table.plateId] })
+    })
+)
+
+export const platesToCategoriesRelations = relations(platesToCategories, ({ one }) => ({
+  plateId: one(plates, {
+    fields: [platesToCategories.plateId],
+    references: [plates.id],
+  }),
+  category: one(categories, {
+    fields: [platesToCategories.categoryId],
+    references: [categories.id],
+  }),
+}));
 
 export const ingredientsToPlates = createTable(
     "ingredients_to_plates",
@@ -134,19 +155,19 @@ export const ingredientsToPlates = createTable(
 );
 
 export const ingredientsToPlatesRelations = relations(ingredientsToPlates, ({ one }) => ({
-  group: one(ingredients, {
+  ingredient: one(ingredients, {
     fields: [ingredientsToPlates.ingredientId],
     references: [ingredients.id],
   }),
-  user: one(plates, {
+  plate: one(plates, {
     fields: [ingredientsToPlates.plateId],
     references: [plates.id],
   }),
 }));
 
 export const foods = createTable("foods", {
-  id: integer("id"),
-  category: text("category", { enum: ["BREAKFAST", "LAUNCH", "AFTER_LAUNCH", "DINNER"] }),
+  id: integer("id").notNull().primaryKey({ autoIncrement: true }),
+  categoryId: integer("category_id").references(() => categories.id),
   snack: integer("snack", { mode: "boolean" }),
   day: integer("day", { mode: "timestamp" }),
   plateId: integer("plate_id").references(() => plates.id),
@@ -161,5 +182,14 @@ export const foodsRelations = relations(foods, ({ one }) => ({
   user: one(users, {
     fields: [foods.userId],
     references: [users.id],
+  }),
+  category: one(categories, {
+    fields: [foods.categoryId],
+    references: [categories.id],
   })
 }));
+
+export const categories = createTable("categories", {
+  id: integer("id").primaryKey().unique(),
+  description: text("description", { length: 255 }).notNull(),
+})

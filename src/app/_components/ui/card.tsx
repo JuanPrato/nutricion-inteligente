@@ -106,7 +106,7 @@ function CardIcon({ className, ...props }: React.ComponentProps<"div">) {
   return (
       <div
         data-slot="card-icon"
-        className={cn("center bg-primary-dark aspect-square rounded-full size-[40px] absolute top-6 right-2", className)}
+        className={cn("center gap-1 px-1 bg-primary-dark aspect-square rounded-full size-[40px] absolute top-6 right-6", className)}
         {...props}
       />
   )
