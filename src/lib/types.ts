@@ -26,3 +26,5 @@ export type InferResultType<
 export type Ingredient = typeof ingredients.$inferSelect;
 
 export type Plate = InferResultType<"plates", { ingredientsToPlates: { with: { ingredient: true } }, platesToCategories: { with: { category: true } } }>;
+
+export type Food = InferResultType<"foods", { category: true, plate: true }>

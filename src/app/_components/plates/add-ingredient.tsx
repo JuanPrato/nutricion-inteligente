@@ -17,7 +17,7 @@ export function AddIngredient(props: Props) {
   const [value, setValue] = useState("");
 
   function handleSubmit() {
-    const ing = props.ingredients.find(i => i.id.toString() === value);
+    const ing = props.ingredients.find(i => i.name === value);
     if (!ing) return;
     setEditing(false);
     props.onNewIngredient(ing);
@@ -27,28 +27,33 @@ export function AddIngredient(props: Props) {
     return (
       <div className="little-card-small">
         <Button
-            shape="circle"
-            size="icon"
-            variant={"ghost"}
-            className="text-black hover:text-black"
-            onClick={handleSubmit}
-        ><ICONS.SAVE /></Button>
+          shape="circle"
+          size="icon"
+          variant={"ghost"}
+          className="text-black hover:text-black"
+          onClick={handleSubmit}
+        >
+          <ICONS.SAVE />
+        </Button>
         <Combobox
-            items={props.ingredients.map(i => ({ value: i.id.toString(), label: `${i.name} ${i.kcal} kcal` }))}
-            searchPlaceholder={"Buscar ingredientes..."}
-            onChange={setValue}
+          items={props.ingredients.map((i) => ({
+            value: `${i.name}`,
+            label: `${i.name} ${i.kcal} kcal`,
+          }))}
+          searchPlaceholder={"Buscar ingredientes..."}
+          onChange={setValue}
         />
         <Button
-            shape="circle"
-            size="icon"
-            variant={"ghost"}
-            className="text-danger hover:text-danger"
-            onClick={() => setEditing(false)}
+          shape="circle"
+          size="icon"
+          variant={"ghost"}
+          className="text-danger hover:text-danger"
+          onClick={() => setEditing(false)}
         >
           <ICONS.CANCEL />
         </Button>
       </div>
-    )
+    );
   }
 
   return (

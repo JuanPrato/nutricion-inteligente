@@ -48,7 +48,7 @@ export function Combobox(props: Props) {
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[200px] p-0 bg-primary-light backdrop-blur-lg"
+          className="w-[300px] p-0 bg-primary-light backdrop-blur-lg"
           container={containerRef.current}
         >
           <Command className="bg-background">

@@ -7,11 +7,11 @@ import type { IconType } from "react-icons";
 import type { ReactNode } from "react";
 
 const littleCardVariants = cva(
-    "flex-row h-[75px] px-4 py-1 gap-1 m-0 w-full",
+    "flex-row h-[75px] px-4 py-1 gap-1 m-0 w-full overflow-hidden",
     {
       variants: {
         size: {
-          default: "[&_.little-card-content]:flex-col [&_.little-card-content]:items-start",
+          default: "[&_.little-card-content]:flex-col [&_.little-card-content]:items-start [&_.little-card-content]:max-w-1/2",
           small:
               "h-[50px] items-center [&_.card-description]:text-muted [&_.card-description]:ml-1 [&_.little-card-content]:h-fit [&_.little-card-content]:flex-row [&_.little-card-content]:justify-start [&_.little-card-content]:items-baseline"
         }
@@ -46,10 +46,10 @@ export function LittleCard(props: LittleCardProps & VariantProps<typeof littleCa
               }
             </div>
         )}
-        <div className={twMerge("flex h-full grow justify-center items-center leading-none little-card-content")}>
+        <div className="flex flex-col h-full grow justify-center leading-none little-card-content">
           <p className="text-md">{props.top}</p>
           <h3 className="text-xl">{props.principal}</h3>
-          <h5 className={twMerge("text-primary text-sm card-description")}>{props.description}</h5>
+          <h5 className="block text-primary text-sm overflow-hidden whitespace-nowrap overflow-ellipsis card-description">{props.description}</h5>
         </div>
         {props.action && <div className="w-1/4 center">{props.action}</div>}
       </Card>

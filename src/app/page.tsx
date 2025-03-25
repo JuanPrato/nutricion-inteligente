@@ -1,5 +1,5 @@
 import { auth } from "~/server/auth";
-import { HydrateClient } from "~/trpc/server";
+import { api, HydrateClient } from "~/trpc/server";
 import { redirect } from "next/navigation";
 import DayFoods from "~components/home/day-foods";
 import DailySummary from "~components/home/daily-summary";
@@ -12,6 +12,8 @@ export default async function Home() {
   if (!session) {
     redirect(ROUTES.LOGIN);
   }
+
+  void api.foods.getTodayFoods.prefetch();
 
   return (
     <HydrateClient>
