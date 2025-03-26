@@ -16,24 +16,26 @@ import { cn } from "~/lib/utils";
 import type { Plate } from "~/lib/types";
 import { Button } from "~components/ui/button";
 import { type FOODS, ICONS } from "~utils/const";
-import { useRouter } from "next/navigation";
 
 interface FoodModalProps {
   open: boolean;
   onClose: (v: boolean) => void;
   category: FOODS;
   foodId?: number | null;
+  onPlateChange: () => void;
 }
 
 export function FoodModal(props: FoodModalProps) {
+
   const plates = api.plates.getAll.useQuery();
+
   const { mutate } = api.foods.saveFood.useMutation({
-    onSuccess(){
-      router.refresh();
+    async onSuccess(){
+      props.onPlateChange();
     }
   });
+
   const [value, setValue] = useState<Plate | null>(null);
-  const router = useRouter();
 
   async function handleSave() {
     if (!value) return;

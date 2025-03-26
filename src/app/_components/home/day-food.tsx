@@ -11,6 +11,7 @@ import { useState } from "react";
 interface Props {
   foodType: FOODS;
   foods: Food[];
+  revalidate: () => void;
 }
 
 export function DayFood(props: Props) {
@@ -21,7 +22,6 @@ export function DayFood(props: Props) {
   function onClose(v: boolean) {
     setOpen(v);
   }
-
 
   return (
     <div className="flex w-full flex-col items-center gap-2">
@@ -76,7 +76,7 @@ export function DayFood(props: Props) {
         <ICONS.INGREDIENTS />{" "}
         <span className="text-sm font-light">Nuevo snack?</span>
       </Button>
-      <FoodModal open={open} onClose={onClose} category={props.foodType} foodId={foodEditId} />
+      <FoodModal open={open} onClose={onClose} category={props.foodType} foodId={foodEditId} onPlateChange={props.revalidate} />
     </div>
   );
 }

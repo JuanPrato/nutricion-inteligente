@@ -14,6 +14,7 @@ export default async function Home() {
   }
 
   void api.foods.getTodayFoods.prefetch();
+  void api.foods.getCalories.prefetch();
 
   return (
     <HydrateClient>
