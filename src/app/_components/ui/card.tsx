@@ -32,28 +32,33 @@ interface LittleCardProps {
 }
 
 export function LittleCard(props: LittleCardProps & VariantProps<typeof littleCardVariants>) {
+
+  const classes = cn(littleCardVariants({ size: props.size }));
+  
   return (
-      <Card className={cn(littleCardVariants({ size: props.size }))}>
-        {props.icon && (
-            <div className="center h-full w-1/4">
-              {
-                <props.icon
-                    className={twMerge(
-                        "bg-primary-dark aspect-square rounded-full h-[60px] w-[60px] p-2 overflow-visible",
-                        props.iconClassName,
-                    )}
-                />
-              }
-            </div>
-        )}
-        <div className="flex flex-col h-full grow justify-center leading-none little-card-content">
-          <p className="text-md">{props.top}</p>
-          <h3 className="text-xl">{props.principal}</h3>
-          <h5 className="block text-primary text-sm overflow-hidden whitespace-nowrap overflow-ellipsis card-description">{props.description}</h5>
+    <Card className={classes}>
+      {props.icon && (
+        <div className="center h-full w-1/4">
+          {
+            <props.icon
+              className={twMerge(
+                "bg-primary-dark aspect-square h-[60px] w-[60px] overflow-visible rounded-full p-2",
+                props.iconClassName,
+              )}
+            />
+          }
         </div>
-        {props.action && <div className="w-1/4 center">{props.action}</div>}
-      </Card>
-  )
+      )}
+      <div className="little-card-content flex h-full grow flex-col justify-center leading-none">
+        <p className="text-md">{props.top}</p>
+        <h3 className={twMerge("text-xl", props.size === "small" && "text-lg")}>{props.principal}</h3>
+        <h5 className="text-primary card-description block overflow-hidden text-sm overflow-ellipsis whitespace-nowrap">
+          {props.description}
+        </h5>
+      </div>
+      {props.action && <div className="center w-1/4">{props.action}</div>}
+    </Card>
+  );
 }
 
 function Card({ className, ...props }: React.ComponentProps<"div">) {

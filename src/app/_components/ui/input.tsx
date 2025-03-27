@@ -1,7 +1,8 @@
 import * as React from "react"
 
 import { cn } from "~/lib/utils"
-import { Label } from "~components/ui/label";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "~components/ui/form";
+import type { Control, FieldValues, Path } from "react-hook-form";
 
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   return (
@@ -19,16 +20,33 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
   )
 }
 
-type TextInputProps = React.ComponentProps<"input"> & {
+type TextInputProps<T extends FieldValues> = Omit<React.ComponentProps<"input">, "name"> & {
   label?: string;
+  control?: Control<T>;
+  name: Path<T>;
 }
 
-function TextInput(props: TextInputProps) {
+function TextInput<T extends FieldValues>(props: TextInputProps<T>) {
+
+  const control = props.control;
+  const name = props.name ?? "";
+
+  const propsRest = { ...props, control: undefined, name: undefined };
+
   return (
-    <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Label htmlFor={props.name}>{props.label}</Label>
-      <Input type="text" {...props} />
-    </div>
+      <FormField<T>
+          control={control}
+          name={name ?? ""}
+          render={({ field }) => (
+            <FormItem className="grid w-full max-w-sm items-center gap-1.5">
+              <FormLabel>{props.label}</FormLabel>
+              <FormControl>
+                <Input type="text" {...propsRest} {...field}/>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+    />
   )
 }
 
