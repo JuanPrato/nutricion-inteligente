@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "~components/ui/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { api } from "~/trpc/react";
 
 interface PlateModalProps {
   open: boolean;
@@ -26,6 +27,16 @@ const FormSchema = z.object({
 });
 
 export function PlateModal(props: PlateModalProps) {
+
+  const utils = api.useUtils();
+
+  const { mutate } = api.plates.savePlate.useMutation({
+    async onSuccess() {
+      onClose();
+      await utils.plates.getAll.invalidate();
+    }
+  });
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -36,7 +47,7 @@ export function PlateModal(props: PlateModalProps) {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log(data);
+    mutate(data);
   }
 
   function onClose() {
