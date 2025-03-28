@@ -18,8 +18,8 @@ async function getValues() {
   const daysToFetch = [];
 
   for (let i = 0; !dayIt.isSame(today, "day"); i++) {
-    daysToFetch.push(dayIt.toDate());
     dayIt = dayIt.add(1, "day");
+    daysToFetch.push(dayIt.toDate());
   }
 
   const caloryList = await api.foods.getCalories({ days: daysToFetch });
