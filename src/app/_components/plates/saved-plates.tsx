@@ -21,7 +21,7 @@ function SavedPlates() {
               onClick={() => setOpen(true)}
           >Nuevo plato</Button>}
       >
-        <div className="w-full grid grid-cols-3 gap-2">
+        <div className="w-full grid grid-cols-2 md:grid-cols-3 gap-2">
           {
             platesResult.data?.map(plate => (
                 <PlateCard key={plate.id} plate={plate} />

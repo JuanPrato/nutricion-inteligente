@@ -11,17 +11,17 @@ function NavbarLinks() {
         <LinkButton
           href={ROUTES.HOME}
         >
-          <IoHomeOutline className="size-6" /> <span className="text-xl font-normal">Inicio</span>
+          <IoHomeOutline className="size-6" /> <span className="text-xl font-normal hidden lg:inline">Inicio</span>
         </LinkButton>
         <LinkButton
           href={ROUTES.PLATES}
         >
-          <PiForkKnife className="size-6" /> <span className="text-xl font-normal">Platos</span>
+          <PiForkKnife className="size-6" /> <span className="text-xl font-normal hidden lg:inline">Platos</span>
         </LinkButton>
         <LinkButton
           href={ROUTES.PROFILE}
         >
-          <RxAvatar className="size-6" /> <span className="text-xl font-normal">Perfil</span>
+          <RxAvatar className="size-6" /> <span className="text-xl font-normal hidden lg:inline">Perfil</span>
         </LinkButton>
     </section>
   );

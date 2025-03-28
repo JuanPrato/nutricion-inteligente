@@ -38,7 +38,7 @@ export function PlateCard({ plate }: PlateCardProps) {
           })
         }
       </CardIcon>
-      <CardContent>
+      <CardContent className="grow">
         <h5>Ingredientes:</h5>
         <ul className="text-sm">
           {plate.ingredientsToPlates.map(({ ingredient }) => (
