@@ -96,6 +96,11 @@ export const verificationTokens = createTable(
   })
 );
 
+export const userObjetives = createTable("user_objetives", {
+  user_id: text("user_id").primaryKey().references(() => users.id),
+  dairyCalories: integer("dairy_calories").notNull().default(2000),
+})
+
 export const ingredients = createTable("ingredients", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   name: text("name", { length: 255 }).notNull(),
